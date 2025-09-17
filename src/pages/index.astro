@@ -16,11 +16,12 @@ const gentoo = penguins.filter(d => d.species === "Gentoo");
   <main class="container">
     <h1 class="title">Penguins par espèce</h1>
 
-    <nav class="menu">
-      <a href="#adelie">Adelie</a>
-      <a href="#chinstrap">Chinstrap</a>
-      <a href="#gentoo">Gentoo</a>
-    </nav>
+    <!-- Select menu -->
+    <select id="speciesSelect" class="select-menu">
+      <option value="#adelie">Adelie</option>
+      <option value="#chinstrap">Chinstrap</option>
+      <option value="#gentoo">Gentoo</option>
+    </select>
 
     <div class="slider">
       <section id="adelie" class="slide card">
@@ -56,8 +57,14 @@ const gentoo = penguins.filter(d => d.species === "Gentoo");
   </main>
 </Layout>
 
-<style>
+<script>
+  document.querySelector("#speciesSelect")?.addEventListener("change", (evt) => {
+    const value = evt.target.value;
+    location.hash = value; 
+  });
+</script>
 
+<style>
   .container {
     padding: 2rem;
     max-width: 1200px;
@@ -69,43 +76,28 @@ const gentoo = penguins.filter(d => d.species === "Gentoo");
     font-weight: 700;
     margin-bottom: 1.5rem;
     text-align: center;
-    background: linear-gradient(90deg, #2563eb, #10b981);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #7c3aed;
   }
 
-  .menu {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .menu a {
-    text-decoration: none;
-    font-weight: 600;
-    color: #374151;
-    position: relative;
-    transition: color 0.2s ease;
-  }
-
-  .menu a:hover {
-    color: #2563eb;
-  }
-
-  .menu a::after {
-    content: "";
+  /* Select menu stylisé */
+  .select-menu {
     display: block;
-    height: 2px;
-    background: linear-gradient(90deg, #2563eb, #10b981);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+    margin: 0 auto 2rem auto;
+    padding: 0.5rem 1rem;
+    border: 2px solid #7c3aed;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    color: #7c3aed;
+    background: white;
+    cursor: pointer;
   }
 
-  .menu a:hover::after {
-    transform: scaleX(1);
+  .select-menu:focus {
+    outline: none;
+    border-color: #a855f7;
   }
 
+  /* Slider */
   .slider {
     display: flex;
     overflow-x: auto;
@@ -121,6 +113,7 @@ const gentoo = penguins.filter(d => d.species === "Gentoo");
     scroll-snap-align: start;
   }
 
+  /* Carte */
   .card {
     background: white;
     border-radius: 1rem;
@@ -131,12 +124,12 @@ const gentoo = penguins.filter(d => d.species === "Gentoo");
   .card h2 {
     margin-bottom: 1rem;
     font-size: 1.5rem;
-    color: #2563eb;
+    color: #7c3aed;
   }
 
   .count {
     margin-top: 1rem;
     font-weight: 500;
-    color: #10b981;
+    color: #a855f7;
   }
 </style>
