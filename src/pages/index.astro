@@ -57,86 +57,86 @@ const gentoo = penguins.filter(d => d.species === "Gentoo");
 </Layout>
 
 <style>
+
   .container {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
 
-.title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  background: linear-gradient(90deg, #7c3aed, #a855f7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+  .title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    background: linear-gradient(90deg, #2563eb, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
-/* Menu */
-.menu {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-bottom: 2rem;
-}
+  .menu {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
 
-.menu a {
-  text-decoration: none;
-  font-weight: 600;
-  color: #4b5563; 
-  position: relative;
-  transition: color 0.2s ease;
-}
+  .menu a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #374151;
+    position: relative;
+    transition: color 0.2s ease;
+  }
 
-.menu a:hover {
-  color: #7c3aed; 
-}
+  .menu a:hover {
+    color: #2563eb;
+  }
 
-.menu a::after {
-  content: "";
-  display: block;
-  height: 2px;
-  background: linear-gradient(90deg, #7c3aed, #a855f7);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
+  .menu a::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background: linear-gradient(90deg, #2563eb, #10b981);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
 
-.menu a:hover::after {
-  transform: scaleX(1);
-}
+  .menu a:hover::after {
+    transform: scaleX(1);
+  }
 
-.slider {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  gap: 2rem;
-  padding-bottom: 1rem;
-}
+  .slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 2rem;
+    padding-bottom: 1rem;
+  }
 
-.slide {
-  min-width: 100%;
-  flex-shrink: 0;
-  scroll-snap-align: start;
-}
+  .slide {
+    min-width: 100%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
 
-.card {
-  background: white;
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-}
+  .card {
+    background: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
 
-.card h2 {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  color: #7c3aed; 
-}
+  .card h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #2563eb;
+  }
 
-.count {
-  margin-top: 1rem;
-  font-weight: 500;
-  color: #a855f7; 
-}
+  .count {
+    margin-top: 1rem;
+    font-weight: 500;
+    color: #10b981;
+  }
 </style>

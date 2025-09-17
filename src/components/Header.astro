@@ -4,31 +4,24 @@ const pathname = Astro.url.pathname;
 
 <header class="navbar">
   <div class="logo">My Data Viz</div>
-  <nav>
-    <ul>
-      <li>
-        <a href="/" class={pathname === "/" ? "active" : ""}>Penguins</a>
-      </li>
-      <li>
-        <a href="/species/Adelie" class={pathname === "/species/Adelie" ? "active" : ""}>Adelie</a>
-      </li>
-      <li>
-        <a href="/species/Chinstrap" class={pathname === "/species/Chinstrap" ? "active" : ""}>Chinstrap</a>
-      </li>
-      <li>
-        <a href="/species/Gentoo" class={pathname === "/species/Gentoo" ? "active" : ""}>Gentoo</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="nav-select">
+    <label for="species" class="label">Espèce :</label>
+    <select id="species">
+      <option value="/">Penguins</option>
+      <option value="Adelie">Adelie</option>
+      <option value="Chinstrap">Chinstrap</option>
+      <option value="Gentoo">Gentoo</option>
+    </select>
+  </div>
 </header>
 
 <style>
-  .navbar {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: #a855f7;
+  background: linear-gradient(90deg, #7c3aed, #a855f7); /* violet dégradé */
   border-radius: 0 0 1rem 1rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   position: sticky;
@@ -39,44 +32,55 @@ const pathname = Astro.url.pathname;
 .logo {
   font-weight: 700;
   font-size: 1.25rem;
-  background: #ffffff;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
 }
 
-nav ul {
+.nav-select {
   display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-nav a {
-  text-decoration: none;
-  font-weight: 500;
-  color: #d6d6d6; 
-  position: relative;
-  transition: color 0.2s ease;
-}
-
-nav a:hover {
-  color: #ffffff; 
-}
-
-nav a.active {
-  color: #ffffff; 
+.label {
   font-weight: 600;
+  color: #f3e8ff;
 }
 
-nav a.active::after {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  border-radius: 1px;
+select {
+  padding: 0.4rem 1rem;
+  border: 2px solid #a855f7;
+  border-radius: 0.5rem;
+  font-weight: 600;
   background: #ffffff;
+  color: #4b5563;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+select:hover {
+  border-color: #7c3aed;
+  color: #7c3aed;
 }
 </style>
+
+<script>
+  const select = document.querySelector("#species");
+  if (select) {
+
+    const path = location.pathname;
+    if (path === "/") {
+      select.value = "/";
+    } else if (path.startsWith("/species/")) {
+      select.value = path.replace("/species/", "");
+    }
+
+    select.addEventListener("change", (evt) => {
+      const value = evt.target.value;
+      if (value === "/") {
+        location.pathname = "/";
+      } else {
+        location.pathname = "/species/" + value;
+      }
+    });
+  }
+</script>
